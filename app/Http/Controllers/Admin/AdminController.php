@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Services\SmsService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class AdminController extends Controller
 {
   
-     use AuthorizesRequests;
+    use AuthorizesRequests;
 
 public function sendBulkSms(SmsService $smsService)
 {
@@ -56,44 +58,54 @@ public function regUser(Request $req) {
 }
 
 public function AdminLogin(Request $req) {
+
+ $user = User::where('email', $req->username)->first();
+   dd(Hash::check("password",$user->password));
+    if (!$user) {
+        dd('User not found');
+    }
+
+    dd(Hash::check($req->password, $user->password));
   
     $validator = $req->validate([
     "username"=>"Required",
     "password"=>"Required"
-  ]);
+    ]);
 
   
-  if(auth()->attempt([
+  if(Auth::attempt([
     "email" => $validator['username'],
     "password"=> $validator['password']
   ])) {
   
+     //$req->session()->regenerate();
     $req->session()->Put('data',$validator['username']);
-    if(auth()->user()->role == 'admin') {
+    if(Auth::user()->role == 'admin') {
        return redirect('dashboard');
     }
-    else if(!auth()->check()) {
-       dd('user not logged in');
-    }
-    else {
-       
-         dd('you are not an admin');
-       //return redirect('/');
-    }
-    
+
+      
+    Auth::logout();
+
+    return back()->withErrors([
+       'username' => 'You are not authorized as admin.'
+     ]);
+}
+
+   return back()->withErrors([
+        'username' => 'Invalid credentials.'
+    ]);
+
+
+
 }
 
 
 
-
-}
-
-
-
-public function Logout() {
-    auth()->logout();
-    return redirect('/');
-}
+  public function Logout() {
+      Auth::logout();
+      return redirect('/');
+  }
 
 
   

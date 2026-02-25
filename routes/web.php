@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\Users\HomeController;
 use App\Services\SmsService;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,"Index"])->name('home.index');;
 
@@ -94,3 +95,7 @@ Route::get('/senderid', function (SmsService $smsService) {
 
 Route::Get("testId",[AdminController::class,"testId"]);
 
+Route::get('/seed', function () {
+    Artisan::call('db:seed');
+    return 'Seeded!';
+});
