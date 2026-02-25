@@ -5,6 +5,7 @@ use App\Http\Controllers\Media\MediaController;
 use App\Http\Controllers\Users\HomeController;
 use App\Services\SmsService;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class,"Index"])->name('home.index');;
@@ -95,7 +96,14 @@ Route::get('/senderid', function (SmsService $smsService) {
 
 Route::Get("testId",[AdminController::class,"testId"]);
 
+
+
 Route::get('/seed', function () {
-    Artisan::call('db:seed');
-    return 'Seeded!';
+    dd([
+        'connected_database' => DB::connection()->getDatabaseName(),
+        'users_count_before' => DB::table('users')->count()
+    ]);
+    //Artisan::call('db:seed');
+    //return 'Seeded!';
 });
+
