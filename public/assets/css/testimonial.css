@@ -1,0 +1,249 @@
+
+
+#testimony {
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe);
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  border-radius: 0 0 40px 40px; /* soft rounded bottom */
+  position: relative;
+  overflow: hidden;
+
+}
+
+.testi-slide-container {
+    display: none;
+}
+
+.testi-slide-container.active {
+    display: block;
+}
+
+
+/* subtle overlay for depth */
+#testimony::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* container stays above overlay */
+#testimony .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* title styling */
+#testimony .section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff, #f9d423, #ff4e50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  animation: fadeInDown 1s ease;
+}
+
+/* simple animation */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+.body {
+	/*-ms-text-combine-horizontal: ;*/
+   /*min-height: 100vh;*/
+   margin-top: 2px;
+   overflow: hidden;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-bottom: 70px;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+
+   animation: gradientShift 12s ease infinite;
+
+}
+
+
+
+
+.main-slide-container {
+	position: relative;
+	perspective: 1000px;
+
+
+}
+
+
+/*@media (max-width: 900px) {
+.main-slide-container {
+	perspective: 1000px;
+}	
+}*/
+
+.main-slide-container .testi-slide-container .testi-slide {
+	border-radius: 5px;
+	background: #fff;
+	box-shadow: 0 5px 10px #3337;
+	width: 450px;
+	padding: 20px;
+	margin: 10px;
+	top: 40px;
+	position: relative;
+	transform-style: preserve-3d;
+	animation:slide .4s linear;
+}
+
+@media (max-width: 900px) {
+	  
+.main-slide-container {
+   max-width: 100%;
+}	
+
+	.main-slide-container .testi-slide-container .testi-slide {
+		max-width: 100%;
+	  margin: 0;
+	  top: 33px;
+	}
+
+}
+
+@keyframes slide {
+	0% {
+		transform: rotateX(180deg);
+	}
+}
+
+.main-slide-container .testi-slide-container .testi-slide > * {
+  animation: slideContent .2s linear .4s backwards;
+
+}
+
+@keyframes slideContent {
+	0% {
+		opacity: 0;
+		transform: scale(.5);
+	}
+}
+
+.main-slide-container .testi-slide-container .testi-slide .icon {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	font-size: 90px;
+  color: #4a3173;
+}
+
+
+/*Icon responsiveness*/
+
+@media (max-width: 900px) {
+	.main-slide-container .testi-slide-container 
+	.testi-slide .icon {
+    font-size: 50px;
+    top: 20px;
+	}
+}
+.main-slide-container .testi-slide-container .testi-slide img {
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-right: 10px;
+}
+
+.main-slide-container .testi-slide-container .testi-slide .user {
+	display: flex;
+	align-items: center;
+}
+
+.main-slide-container .testi-slide-container 
+.testi-slide .user .user-info h3 {
+	color: #4a3173/*#333*/;
+	font-size: 20px;
+}
+
+.main-slide-container .testi-slide-container 
+.testi-slide .user .user-info h3 .stars i {
+	color: #3498db;
+	font-size: 15px;
+}
+
+.main-slide-container .testi-slide-container 
+.testi-slide .text {
+  color: #333;
+  font-size: 14px;
+  padding-top: 15px;
+  font-style: italic;
+}
+
+.main-slide-container .testi-slide-container {
+	display: none;
+}
+
+.main-slide-container .testi-slide-container.active {
+	display: block;
+}
+
+.main-slide-container #next,
+.main-slide-container #prev {
+	
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 20px;
+	background: #fff;
+	color: #333;
+	cursor: pointer;
+	border-radius: 50%;
+	box-shadow: 0 5px 10px #3337;
+}
+
+.main-slide-container #next {
+	right: -75px;
+}
+
+
+.main-slide-container #prev {
+	left: -30px;
+}
+
+@media (max-width: 900px) {
+
+.main-slide-container #next {
+	right: 10px;
+	top: 300px;
+}
+
+
+.main-slide-container #prev {
+	left: 50px;
+	top: 300px;
+}
+
+
+}
+
+.main-slide-container #next:hover,
+.main-slide-container #prev:hover {
+	background: #ecb540;
+	color:#fff;
+}

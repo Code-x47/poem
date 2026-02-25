@@ -1,0 +1,187 @@
+:root {
+  --bg-gradient: linear-gradient(to bottom right, #6b21a8, #1e3a8a, #4f46e5);
+  --text-gradient: linear-gradient(to right, #c084fc, #f472b6);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+/* Home Button Styles */
+.home-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(to right, #8b5cf6, #06b6d4);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  z-index: 1000;
+}
+
+.home-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+  background: linear-gradient(to right, #7c3aed, #0891b2);
+}
+
+.home-button:active {
+  transform: translateY(0);
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.header p {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #d8b4fe;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.controls select,
+.controls input {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  color: white;
+  min-width: 200px;
+}
+
+.music-section {
+  margin-bottom: 4rem;
+}
+
+.music-section h2 {
+  font-size: 2rem;
+  text-align: center;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.song-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.song-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(139, 92, 246, 0.25);
+}
+
+.song-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.song-artist {
+  color: #d8b4fe;
+  font-size: 0.875rem;
+}
+
+audio {
+  width: 100%;
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.song-buttons button,
+.song-buttons a {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.song-buttons button {
+  background: linear-gradient(to right, #a855f7, #ec4899);
+}
+
+.song-buttons a {
+  background: linear-gradient(to right, #22c55e, #14b8a6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.no-songs {
+  text-align: center;
+  color: #d8b4fe;
+  font-size: 1.25rem;
+}
+
+/* Responsive design for home button */
+@media (max-width: 768px) {
+  .home-button {
+    top: 15px;
+    left: 15px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .header h1 {
+  font-size: 1.5rem;
+  
+  font-weight: 800;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+}
