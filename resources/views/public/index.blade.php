@@ -289,12 +289,12 @@
 						<div class="main-navigation">
 							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 							<ul class="menu">
-								<!-- <li class="menu-item current-menu-item"><a href="#about">About us</a></li>
+								<li class="menu-item current-menu-item"><a href="#about">About us</a></li>
 								<li class="menu-item"><a href="#pastors">Pastors</a></li>
 								<li class="menu-item"><a href="#testimony">Testimonies</a></li>
 								<li class="menu-item"><a href="#seremons">Sermons</a></li>
 								<li class="menu-item"><a href="#families">Gallery</a></li>
-								<li class="menu-item"><a href="#contact">Contact</a></li> -->
+								<li class="menu-item"><a href="#contact">Contact</a></li>
 							</ul> <!-- .menu -->
 						</div> <!-- .main-navigation -->
 
