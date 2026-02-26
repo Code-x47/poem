@@ -281,7 +281,7 @@
 				<div class="container">
 					<div class="header-bar">
 						<a href="index.html" class="branding">
-							<img src="{{asset('assets/image/images/rotationalLogo.gif')}}" alt="" class="logo" width="70" height="70">
+							<!-- <img src="{{asset('assets/image/images/rotationalLogo.gif')}}" alt="" class="logo" width="70" height="70"> -->
 							<h1 class="site-title">People Of Exploits Ministry International</h1>
 						</a>
 
