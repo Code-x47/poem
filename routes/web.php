@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('/', [HomeController::class,"Index"])->name('home.index');;
 
 /*Route::get('/message', function() {
@@ -105,5 +106,11 @@ Route::get('/seed', function () {
     ]);
     //Artisan::call('db:seed');
     //return 'Seeded!';
+});
+
+
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
+    return 'Cache cleared!';
 });
 
