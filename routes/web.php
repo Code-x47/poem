@@ -100,12 +100,9 @@ Route::Get("testId",[AdminController::class,"testId"]);
 
 
 Route::get('/seed', function () {
-    dd([
-        'connected_database' => DB::connection()->getDatabaseName(),
-        'users_count_before' => DB::table('users')->count()
-    ]);
-    //Artisan::call('db:seed');
-    //return 'Seeded!';
+    
+    Artisan::call('db:seed');
+    return 'Seeded!';
 });
 
 
