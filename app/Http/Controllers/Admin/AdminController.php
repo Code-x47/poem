@@ -58,14 +58,6 @@ public function regUser(Request $req) {
 }
 
 public function AdminLogin(Request $req) {
-
- $user = User::where('email', $req->username)->first();
-   dd(Hash::check("password",$user->password));
-    if (!$user) {
-        dd('User not found');
-    }
-
-    dd(Hash::check($req->password, $user->password));
   
     $validator = $req->validate([
     "username"=>"Required",

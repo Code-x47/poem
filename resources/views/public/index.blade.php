@@ -281,7 +281,7 @@
 				<div class="container">
 					<div class="header-bar">
 						<a href="index.html" class="branding">
-							<!-- <img src="{{asset('assets/image/images/rotationalLogo.gif')}}" alt="" class="logo" width="70" height="70"> -->
+							<img src="{{asset('assets/image/images/rotationalLogo.gif')}}" alt="" class="logo" width="70" height="70">
 							<h1 class="site-title">People Of Exploits Ministry International</h1>
 						</a>
 
@@ -507,7 +507,7 @@
 							
 						
 								<div class="pastor" data-aos="zoom-in" data-aos-duration="1000">
-									<img src="assets/image/images/obi.jfif" alt="" class="pastor-image">
+									<img src="assets/image/images/Obi.jfif" alt="" class="pastor-image">
 									<h3 class="pastor-name">Pastor Obinna Ezigbo</h3>
 									<small class="date">Youth Pastor</small>
 								</div>
@@ -618,107 +618,6 @@
        <h2 class="section-title">Testimonies</h2>
   </div>
 </div>
-<!-- <div class="body">
-	<div class="main-slide-container" data-aos="zoom-in" data-aos-duration="1000">
-	  <div class="testi-slide-container active">
-	  	 <div class="testi-slide">
-	  	 	<i class="fas fa-quote-right icon"></i>
-	  		<div class="user">
-	  			<img src="">
-	  			<div class="user-info">
-	  				<h3>First Testifier</h3>
-	  				 <div class="testi-stars">
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 </div>
-	  			</div>
-	  		</div>
-	  		<p class="testi-test">
-	  			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-	  		</p>
-	  	 </div>
-	  </div>
-
-
-	  <div class="testi-slide-container">
-	  	 <div class="testi-slide">
-	  	 	<i class="fas fa-quote-right icon"></i>
-	  		<div class="user">
-	  			<img src="">
-	  			<div class="user-info">
-	  				<h3>Second Testifier</h3>
-	  				 <div class="testi-stars">
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 </div>
-	  			</div>
-	  		</div>
-	  		<p class="testi-test">
-	  			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	  			tempor incididunt ut labore et dolore magna aliqua.
-	  		</p>
-	  	 </div>
-	  </div>
-
-
-<div class="testi-slide-container">
-	  	 <div class="testi-slide">
-	  	 	<i class="fas fa-quote-right icon"></i>
-	  		<div class="user">
-	  			<img src="">
-	  			<div class="user-info">
-	  				<h3>Third Testifier</h3>
-	  				 <div class="testi-stars">
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 </div>
-	  			</div>
-	  		</div>
-	  		<p class="testi-test">
-	  			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	  			tempor incididunt ut labore et dolore magna aliqua. 
-	  		</p>
-	  	 </div>
-	  </div>
-
-
-<div class="testi-slide-container">
-	  	 <div class="testi-slide">
-	  	 	<i class="fas fa-quote-right icon"></i>
-	  		<div class="user">
-	  			<img src="">
-	  			<div class="user-info">
-	  				<h3>Fourth Testifier</h3>
-	  				 <div class="testi-stars">
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 	<i class="fas fa-star"></i>
-	  				 </div>
-	  			</div>
-	  		</div>
-	  		<p class="testi-test">
-	  			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	  			tempor incididunt ut labore et dolore magna aliqua. 
-	  		</p>
-	  	 </div>
-	  </div>
-
-<div id="next" class="fas fa-chevron-right" onclick="next()"></div>
-<div id="prev" class="fas fa-chevron-left" onclick="prev()"></div>
-
-</div>
-</div> -->
 
 <div class="body">
     <div class="main-slide-container" data-aos="zoom-in" data-aos-duration="1000">

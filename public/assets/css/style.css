@@ -323,10 +323,12 @@ form textarea {
     font-size: 1.2857142857em;
     color: white;
     margin: 0 0 10px; }
-  .pastor .date {
-    color: #aea1c3;
-    font-size: 14px;
-    font-size: 1em; }
+
+   .pastor .date {
+    color: #ffd166;
+    font-size: 0.95em;
+    font-weight: 500;
+   }
 
 @media (max-width: 900px){
 
