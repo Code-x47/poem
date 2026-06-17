@@ -149,7 +149,7 @@
 
         .hero-controls {
             position: absolute;
-            bottom: 3rem;
+            bottom: 1rem;
 			
             left: 50%;
             transform: translateX(-50%);
@@ -219,6 +219,16 @@
             background-size: cover;
             background-position: center;
         }
+
+		.hero-content {
+			position: relative;
+			z-index: 5;
+		}
+
+		.hero-pattern,
+		.hero-background {
+			z-index: 1;
+		}
 
 
 
@@ -320,10 +330,23 @@
 					</p>
 					<div class="hero-buttons">
 						<button class="btn-primary" style="padding: 1rem 2rem; display: flex; align-items: center; gap: 0.5rem;">
+							<a style="color:#fff" 
+							href="https://www.youtube.com/@POEM_Intl" 
+							target="_blank" 
+							rel="noopener noreferrer">
 							<span>Join Us This Thursday</span>
 							<i class="fas fa-arrow-right"></i>
+							</a>
 						</button>
-						<button class="btn-secondary">Watch Sermons</button>
+						<button class="btn-secondary">
+						 <a style="color:#fff" 
+							href="https://www.youtube.com/@POEM_Intl" 
+							target="_blank" 
+							rel="noopener noreferrer">
+							Watch Sermons
+						</a>
+						
+						</button>
 					</div>
 				</div>
 			</div>
@@ -347,7 +370,11 @@
 							<span>What we do</span>
 							<i class="fas fa-arrow-right"></i>
 						</button>
-						<button class="btn-secondary">About POEM</button>
+						<button class="btn-secondary">
+						<a href="#about" style="color:#fff">
+						About POEM
+						</a>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -365,10 +392,14 @@
             </p>
             <div class="hero-buttons">
                 <button class="btn-primary" style="padding: 1rem 2rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <span>Plan a Visit</span>
+                    <a href="#gMap" style="color:#fff">Plan a Visit</a>
                     <i class="fas fa-arrow-right"></i>
                 </button>
-                <button class="btn-secondary">Contact Us</button>
+                <button class="btn-secondary"> 
+				 <a href="#contact" style="color:#fff">
+				 Contact Us
+				 </a>
+				</button>
             </div>
         </div>
     </div>
@@ -412,11 +443,26 @@
 		  </div>
 	  
 		  <div class="second-section-text" data-aos="zoom-in" data-aos-duration="1000">
-			<div class="badge">LIVE</div>
+			
+			<a class="badge" 
+					href="https://www.youtube.com/@POEM_Intl" 
+					target="_blank" 
+					rel="noopener noreferrer">
+			
+		    LIVE
+			
+			</a>
 	  
 	        
                 <div class="icon-group">
-                    <i class="fab fa-youtube"></i>
+                    
+					<a class="btn-secondary" 
+					href="https://www.youtube.com/@POEM_Intl" 
+					target="_blank" 
+					rel="noopener noreferrer">
+					<i class="fab fa-youtube"></i>
+					</a>
+					
                     <i class="fas fa-headset"></i>
                     <a href="#" class="pdf-link"><i class="fas fa-file-pdf"></i></a>
                     <i class="fas fa-church"></i>
@@ -459,7 +505,8 @@
 									<div class="feature-icon"><img src="assets/image/images/believe.png" alt="" class="icon"></div>
 									<h2 class="feature-title">Belief</h2>
 									<p style="color: #ffffff;">At POEM, we believe in the one true God — God the Father, God the Son,
-    and God the Holy Spirit — working together in perfect unity for our salvation and growth.</p>
+                                          and God the Holy Spirit — working together in perfect unity for our salvation and growth.
+		                            </p>
 								</div>
 							</div>
 							<div class="col-md-3 col-sm-6" data-aos="zoom-in" data-aos-duration="1000">
@@ -659,7 +706,7 @@
 </div>
 
 
-				<div id="events" class="fullwidth-block" style="margin-top: 20px;">
+				{{--<div id="events" class="fullwidth-block" style="margin-top: 20px;">
 					<div class="container">
 						<h2 class="section-title">Upcoming events</h2>
 						<div class="text-center">
@@ -699,13 +746,13 @@
 									<a href="#" class="button">Get more information</a>
 								</div>
 							</div>
-						</div> <!-- .row -->
-					</div> <!-- .container -->
-				</div> <!-- #events -->
+						</div> 
+					</div> 
+				</div> --}}
 				
 <!-- #sermons -->
 
-                <div id="seremons" class="seremon-section utilities">
+             <div id="seremons" class="seremon-section utilities">
 					<div class="container">
 					  <div class="seremon-wrapper">
 						<!-- Column: Recent Songs -->
@@ -713,19 +760,19 @@
 						  <h3 class="section-title">Recent Songs</h3>
 						  <ul class="seremon-list">
 							<li>
-							  <h3 class="seremon-title"><a href="#">Mercy Found Me</a></h3>
+							  <h3 class="seremon-title"><a href="https://open.spotify.com/album/3auKSK4mJN0FzCSK9HXu2w">Mercy Found Me</a></h3>
 							  <div class="seremon-meta">
 								<span><i class="fa fa-calendar"></i> <strong>Date:</strong> 2/11/2023</span>
 								<span><i class="fa fa-user"></i> <strong>POEM:</strong> Choir ft Pastor Nkechi</span>
 							  </div>
 							  <div class="seremon-buttons">
-								<a href="#" class="button"><img src="assets/image/images/icon-headset.png" alt="" class="icon">Listen</a>
-								<a href="#" class="button"><i class="fa fa-download"></i> Download</a>
+								<a href="https://open.spotify.com/album/3auKSK4mJN0FzCSK9HXu2w" class="button"><img src="assets/image/images/icon-headset.png" alt="" class="icon">Listen</a>
+								<a href="https://www.boomplay.com/artists/79618427?from=search" class="button"><i class="fa fa-download"></i> Download</a>
 							  </div>
 							</li>
 							<!-- More songs... -->
 						  </ul>
-						  <a href="#" class="button view-all">See all songs</a>
+						  <a href="https://www.boomplay.com/albums/79618428?from=search" class="button view-all">See all songs</a>
 						</div>
 				  
 						<!-- Column: Latest Sermons -->
@@ -870,7 +917,7 @@
 				</div>
 				<!-- <div class="map" data-latitude="-6.897789" data-longitude="107.621735"></div>-->
 
-				<div class="gMap">
+				<div class="gMap" id="gMap">
 					<iframe class="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2885.4754399857243!2d7.493356911461902!3d6.456937484242981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1044a3c71eed3315%3A0x61cbfd5f997c2bfa!2sEnugu%20Chamber%20Of%20Commerce%2C%20Industry%2C%20Mines%20and%20Agriculture%20(ECCIMA)!5e0!3m2!1sen!2sng!4v1698694984342!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			
@@ -922,8 +969,8 @@
 
   <hr />
   <p class="copyright">
-    © 2026 People Of Exploits Ministry International - All Rights Reserved
-	
+    © 2026 People Of Exploits Ministry International - All Rights Reserved <br>
+	TECH BY: POEM MEDIA TEAM
   </p>
 </footer>
 

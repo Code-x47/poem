@@ -53,6 +53,8 @@ Route::get('/dashboard', function() {
   //USERS SERMON PAGE
    Route::Get('/message','SermonPage')->name('public.message');
 
+   Route::view('sermon-details',"public/sermonDetails");
+
    //SEARCH SERMON
    Route::Get('/search','SearchSermon')->name('message.search');
 
@@ -111,3 +113,6 @@ Route::get('/clear-cache', function () {
     return 'Cache cleared!';
 });
 
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+});

@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('assets/fontawesome/css/all.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/footer.css')}}">
   <link href="http://fonts.googleapis.com/css?family=Belgrano:400" rel="stylesheet" type="text/css">
-	<link href="assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
  
 </head>
@@ -85,8 +85,7 @@
 
   <hr />
   <p class="copyright">
-     © 2026 People Of Exploits Ministry International - All Rights Reserved <br>
-	  TECH BY: POEM MEDIA TEAM
+    © 2023 People Of Exploits Ministry International - All Rights Reserved
 	
   </p>
 </footer>

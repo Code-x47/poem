@@ -66,12 +66,15 @@
                 <div class="song-title">{{ $sermon->title }}</div>
                 <div class="song-artist">{{ $sermon->minister }}</div>
 
-                <audio id="song-ctrl{{ $sermon->id }}" controls
-                      src="{{ asset('sermons/' . $sermon->audio_path) }}"></audio>
+                <!--<audio id="song-ctrl{{ $sermon->id }}" controls
+                      src="{{ asset('storage/' . $sermon->audio_path) }}"></audio>-->
+
+               <audio id="song-ctrl{{ $sermon->id }}" controls
+                  src="{{ $sermon->audioUrl }}"></audio>
 
                 <div class="song-buttons">
                     <button onclick="document.getElementById('song-ctrl{{ $sermon->id }}').play()">▶ Play</button>
-                    <a href="{{ route('download.sermon',$sermon->id) }}" download>⬇ Download</a>
+                    <a href="{{ route('download.sermon', $sermon->id) }}">⬇ Download</a>
                 </div>
             </div>
         @endforeach
@@ -134,7 +137,8 @@
 
   <hr />
   <p class="copyright">
-    © 2023 People Of Exploits Ministry International - All Rights Reserved
+    © 2026 People Of Exploits Ministry International - All Rights Reserved <br>
+	  TECH BY: POEM MEDIA TEAM
 	
   </p>
 </footer>

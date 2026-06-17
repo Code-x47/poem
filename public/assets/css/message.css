@@ -1,187 +1,618 @@
+/* ─────────────────────────────────────────────────────────────
+   MESSAGE GALLERY  —  Midnight Ink + Sacred Gold Theme
+   Matches: sermon-description.html
+   ───────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;800&display=swap');
+
+/* ─── TOKENS ──────────────────────────────────────────────── */
 :root {
-  --bg-gradient: linear-gradient(to bottom right, #6b21a8, #1e3a8a, #4f46e5);
-  --text-gradient: linear-gradient(to right, #c084fc, #f472b6);
+  --gold:        #C9A84C;
+  --gold-light:  #EDD99A;
+  --gold-dim:    #7a6228;
+  --gold-glow:   rgba(201, 168, 76, 0.18);
+
+  --ink:         #111014;
+  --smoke:       #1C1A22;
+  --mist:        #2A2732;
+  --ash:         #3E3A4A;
+  --silver:      #A09CB0;
+  --white:       #FFFFFF;
+
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Inter', system-ui, sans-serif;
+
+  --radius:     16px;
+  --transition: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Legacy variable kept for any inline references */
+  --bg-gradient: var(--ink);
+  --text-gradient: linear-gradient(to right, var(--gold), var(--gold-light));
+}
+
+/* ─── BASE ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-gradient);
-  color: white;
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--white);
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.7;
+
+  /* Ambient drifting glow — same as sermon page */
+  position: relative;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.10) 0%, transparent 70%);
+  animation: drift1 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90, 60, 180, 0.08) 0%, transparent 70%);
+  animation: drift2 22s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes drift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(5vw, 8vh) scale(1.1); }
+}
+@keyframes drift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-4vw, -6vh) scale(1.08); }
+}
+
+/* ─── CONTAINER ───────────────────────────────────────────── */
 .container {
   position: relative;
   z-index: 10;
   max-width: 1200px;
   margin: auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem 5rem;
 }
 
-/* Home Button Styles */
+/* ─── HOME BUTTON ─────────────────────────────────────────── */
 .home-button {
   position: fixed;
   top: 20px;
   left: 20px;
-  background: linear-gradient(to right, #8b5cf6, #06b6d4);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem;
+  background: var(--smoke);
+  color: var(--gold);
+  border: 1.5px solid rgba(201, 168, 76, 0.35);
+  padding: 0.6rem 1.25rem;
+  border-radius: 100px;
+  font-family: var(--sans);
   font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: all var(--transition);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   z-index: 1000;
 }
 
 .home-button:hover {
+  background: var(--mist);
+  border-color: var(--gold);
+  box-shadow: 0 6px 28px rgba(201, 168, 76, 0.25);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-  background: linear-gradient(to right, #7c3aed, #0891b2);
 }
 
 .home-button:active {
   transform: translateY(0);
 }
 
+/* ─── HEADER ──────────────────────────────────────────────── */
+.header {
+  padding: 60px 0 20px;
+  text-align: center;
+}
+
 .header h1 {
-  font-size: 3rem;
-  font-weight: 800;
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center;
+  background-clip: text;
+  margin-bottom: 14px;
 }
 
 .header p {
   text-align: center;
-  max-width: 600px;
+  max-width: 560px;
   margin: 0 auto;
-  color: #d8b4fe;
+  color: var(--silver);
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
+/* Gold rule under header */
+.header::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 24px auto 0;
+}
+
+/* ─── CONTROLS / SEARCH BAR ───────────────────────────────── */
 .controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 12px;
   justify-content: center;
-  margin: 3rem 0;
+  margin: 2.5rem 0 3rem;
 }
 
 .controls select,
-.controls input {
-  padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  color: white;
+.controls input[type="text"] {
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--ash);
+  background: var(--smoke);
+  border-radius: 100px;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 14px;
   min-width: 200px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
 }
 
+.controls select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A09CB0' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.controls select:focus,
+.controls input[type="text"]:focus {
+  border-color: rgba(201, 168, 76, 0.55);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.10);
+}
+
+.controls select option {
+  background: var(--smoke);
+  color: var(--white);
+}
+
+.controls input[type="text"]::placeholder {
+  color: var(--silver);
+  opacity: 0.7;
+}
+
+/* Search / submit button */
+.controls button[type="submit"] {
+  padding: 0.7rem 1.6rem !important;
+  border: none !important;
+  border-radius: 100px !important;
+  background: linear-gradient(135deg, #C9A84C 0%, #EDD99A 60%, #C9A84C 100%) !important;
+  color: #1a1200 !important;
+  font-family: var(--sans) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: transform var(--transition), box-shadow var(--transition) !important;
+  letter-spacing: 0.02em !important;
+}
+
+.controls button[type="submit"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.38) !important;
+}
+
+.controls button[type="submit"]:active {
+  transform: translateY(0) !important;
+}
+
+/* ─── MUSIC SECTION ───────────────────────────────────────── */
 .music-section {
   margin-bottom: 4rem;
 }
 
 .music-section h2 {
-  font-size: 2rem;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
   text-align: center;
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 14px;
 }
 
+.music-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.5), transparent);
+}
+
+/* ─── GRID ────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+
+/* ─── SONG / SERMON CARD ──────────────────────────────────── */
 .song-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  padding: 1rem;
-  transition: all 0.3s ease;
+  background: var(--smoke);
+  border: 1px solid var(--ash);
+  border-radius: var(--radius);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.9rem;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle inner top shine */
+.song-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.2), transparent);
 }
 
 .song-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(139, 92, 246, 0.25);
+  transform: translateY(-4px);
+  border-color: rgba(201, 168, 76, 0.40);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201,168,76,0.08);
 }
 
+.song-card:active {
+  transform: translateY(-1px);
+}
+
+/* ─── CARD TYPOGRAPHY ─────────────────────────────────────── */
 .song-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
 }
 
 .song-artist {
-  color: #d8b4fe;
-  font-size: 0.875rem;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: -4px;
 }
 
+/* ─── AUDIO ELEMENT ───────────────────────────────────────── */
 audio {
   width: 100%;
-  filter: invert(1) hue-rotate(180deg);
+  height: 36px;
+  border-radius: 100px;
+  outline: none;
+  /* Gold-tinted player */
+  filter: sepia(0.6) saturate(3) hue-rotate(5deg) brightness(0.88);
+  background: var(--mist);
+}
+
+/* ─── CARD BUTTONS ────────────────────────────────────────── */
+.song-buttons {
+  display: flex;
+  gap: 8px;
 }
 
 .song-buttons button,
 .song-buttons a {
   flex: 1;
-  padding: 0.5rem;
+  padding: 0.55rem 0.5rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 100px;
   color: white;
   text-decoration: none;
-  font-weight: 500;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
   text-align: center;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .song-buttons button {
-  background: linear-gradient(to right, #a855f7, #ec4899);
+  background: linear-gradient(135deg, #C9A84C 0%, #EDD99A 60%, #C9A84C 100%);
+  color: #1a1200;
+}
+
+.song-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.38);
 }
 
 .song-buttons a {
-  background: linear-gradient(to right, #22c55e, #14b8a6);
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid var(--ash);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
+.song-buttons a:hover {
+  background: var(--mist);
+  border-color: var(--silver);
+  transform: translateY(-2px);
 }
 
+.song-buttons button:active,
+.song-buttons a:active {
+  transform: translateY(0);
+}
+
+/* ─── EMPTY STATE ─────────────────────────────────────────── */
 .no-songs {
   text-align: center;
-  color: #d8b4fe;
-  font-size: 1.25rem;
+  color: var(--silver);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  padding: 4rem 1rem;
 }
 
-/* Responsive design for home button */
+/* ─── FOOTER ──────────────────────────────────────────────── */
+.footer {
+  background: var(--smoke);
+  border-top: 1px solid var(--ash);
+  padding: 3rem 1.5rem 1.5rem;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.footer-logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.footer-col p {
+  font-size: 0.88rem;
+  color: var(--silver);
+  line-height: 1.65;
+}
+
+.footer-col h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.footer-col h4 {
+  color: var(--gold);
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.footer-col .email {
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.underline {
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  width: 40px;
+  margin-bottom: 6px;
+  border-radius: 2px;
+}
+
+/* Footer links */
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: var(--silver);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+/* Newsletter form */
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.2rem;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: var(--mist);
+  border: 1px solid var(--ash);
+  border-radius: 100px;
+  color: var(--white);
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.newsletter-form input[type="email"]::placeholder {
+  color: var(--silver);
+  opacity: 0.7;
+}
+
+.newsletter-form input[type="email"]:focus {
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+.newsletter-form button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: none;
+  color: #1a1200;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.newsletter-form button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.35);
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.social-icons i {
+  font-size: 1.1rem;
+  color: var(--silver);
+  cursor: pointer;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.social-icons i:hover {
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.footer hr {
+  border: none;
+  border-top: 1px solid var(--ash);
+  margin: 1.5rem 0 1rem;
+}
+
+.copyright {
+  text-align: center;
+  color: var(--silver);
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .home-button {
     top: 15px;
     left: 15px;
     padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+    font-size: 12px;
+  }
+
+  .header {
+    padding: 70px 0 16px;
   }
 
   .header h1 {
-  font-size: 1.5rem;
-  
-  font-weight: 800;
-  background: var(--text-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
+    font-size: 2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+  }
+
+  .controls select,
+  .controls input[type="text"] {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .controls button[type="submit"] {
+    width: 100% !important;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
 }
+
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .song-buttons {
+    flex-direction: column;
+  }
 }

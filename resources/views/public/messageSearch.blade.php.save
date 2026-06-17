@@ -39,7 +39,7 @@
     border-radius: 1rem;
     background: linear-gradient(to right, #a855f7, #ec4899);
     color: white;
-    font-weight: 600;
+    font-weight: 600;X
     cursor: pointer;
     transition: background 0.3s ease;
   ">
@@ -68,9 +68,9 @@
               @if($sermon->audio_path)
                 <!--<audio id="song-{{ $sermon->id }}" controls src="{{ asset('sermons/' . $sermon->audio_path) }}"></audio>-->
                <audio id="song-ctrl{{ $sermon->id }}" controls
-                  src="{{ Storage::disk('s3')->url($sermon->audio_path) }}"></audio>
+                  src="{{ asset('sermons/' . $sermon->audio_path) }}"></audio>
                 <div class="song-buttons">
-                  <button onclick="document.getElementById('song-ctrl{{ $sermon->id }}').play()">▶ Play</button>
+                  <button onclick="document.getElementById('song-{{ $sermon->id }}').play()">▶ Play</button>
                   <a href="{{ route('download.sermon', $sermon->id) }}" download>⬇ Download</a>
                 </div>
               @else

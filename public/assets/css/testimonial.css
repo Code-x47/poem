@@ -66,7 +66,7 @@
 .body {
 	/*-ms-text-combine-horizontal: ;*/
    /*min-height: 100vh;*/
-   margin-top: 2px;
+   margin-top: 30px;
    overflow: hidden;
    display: flex;
    align-items: center;
@@ -237,7 +237,7 @@
 .main-slide-container #prev {
 	left: 50px;
 	top: 290px;
-}
+} 
 
 
 }
@@ -247,3 +247,4 @@
 	background: #ecb540;
 	color:#fff;
 }
+

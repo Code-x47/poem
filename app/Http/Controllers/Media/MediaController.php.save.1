@@ -23,11 +23,11 @@ class MediaController extends Controller
 
 
    public function addSermon(Request $req){
-    
+   
     $req->validate([
         'title'       => 'required|string|max:255',
         'minister'    => 'required|string|max:255',
-        'file'        => 'required|mimes:mp3,wav,m4a|max:150500', // 150MB
+        'file'        => 'required|mimes:mp3,wav,m4a|max:99200', // 99MB
         'sermon_date' => 'required|date',
         'year'        => 'required|integer',
         'month'       => 'required|string',
@@ -38,10 +38,8 @@ class MediaController extends Controller
         $title = $req->input('title'); 
         $file = $req->file('file'); 
         // ABSOLUTE path to public_html storage folder                         
-  
-       
-    $cleanTitle = Str::slug($req->title); 
-    $filename = $cleanTitle . '.' . $file->getClientOriginalExtension();   
+  //$filename = $title . '_' . $file->getClientOriginalName();       
+$filename = Str::slug($req->title) . '-' . time() . '.' . $file->extension();    
    // Store file safely
    
 
@@ -52,14 +50,10 @@ class MediaController extends Controller
 
 // Move file directly          
   //$file->move($destination, $filename);
-try {    
+    
 $path = Storage::disk('s3')->putFileAs("sermons/{$req->year}/{$req->month}", $file, $filename);
- 
-} catch (\Exception $e) {
-    $e->getMessage();
-}
- 
-   if (!$path) {
+
+    if (!$path) {
         return back()->with('error', 'Upload to S3 failed');
     }
 
@@ -77,9 +71,9 @@ $path = Storage::disk('s3')->putFileAs("sermons/{$req->year}/{$req->month}", $fi
 }
 
 
-public function download(Sermon $sermon){
- return Storage::disk('s3')->download($sermon->audio_path,$sermon->title . '.mp3');
-}
+     public function download(Sermon $sermon){
+      return Storage::disk('s3')->download($sermon->audio_path);
+    }
   
      public function EditSermon($id) {
       $update = Sermon::find($id);
@@ -111,10 +105,6 @@ public function download(Sermon $sermon){
 
           return redirect('dashboard');
 
-     }
-
-     public function SermonDetails() {
-        return view('sermonDetails');
      }
 
      public function deleteSermon(Sermon $sermon) {
@@ -203,7 +193,7 @@ public function download(Sermon $sermon){
 
  public function dashboardControl() {
        $userdata = User::all();
-       $msg = Sermon::paginate(20);
+       $msg = Sermon::paginate(5);
        $songs = Song::all();
        $pics = Picture::all();
        $testimonies = Testimony::get();
