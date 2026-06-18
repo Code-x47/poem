@@ -1,0 +1,40 @@
+name: Deploy POEM
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Hostinger
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+
+          script: |
+            cd /home/u179489477/domains/poeminternational.com/poem_app
+
+            git pull origin main
+
+            composer install --no-dev --optimize-autoloader
+
+            php artisan optimize:clear
+
+            php artisan config:cache
+
+            php artisan route:cache
+
+            php artisan view:cache
+
+            php artisan migrate --force
