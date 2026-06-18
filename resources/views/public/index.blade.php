@@ -3,27 +3,56 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="keywords" content="POEM, poem People of exploits ministry, Church Website, Gospel Sermon, Pastor Nkechi, Nkechi Tony, pastor Nkechi Esther Tony">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
-		<link rel="stylesheet" type="text/css" href="{{asset('assets/fontawesome/css/all.css')}}">
-		<link rel="icon" type="image/png" sizes="32x32" href="assets/image/images/newLogo.png">
-		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/slider.css')}}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>People of Exploits Ministry International | Poem International |Sermons, Songs & Messages</title>
+		<!-- 🔍 SEO -->
+		<title>People of Exploits Ministry International (POEM) | Sermons, Worship, Messages & Gospel Teachings</title>
 
+		<meta name="description" content="People of Exploits Ministry International (POEM) is a gospel-centered fellowship sharing powerful sermons, worship songs, teachings, and messages from Pastor Mrs Nkechi Esther Tony.">
+		<meta name="keywords" content="POEM, People of Exploits Ministry, Church Website, Gospel Sermons, Pastor Mrs Nkechi Esther Tony, Christian messages, Worship songs, Online church">
+		<meta name="robots" content="index, follow">
+		<meta name="author" content="People of Exploits Ministry International">
 
-		<!-- Loading third party fonts -->
+		<!-- 🌐 Canonical URL (IMPORTANT - replace with your real domain) -->
+		<link rel="canonical" href="https://poeminternational.com">
+
+		<!-- 🎨 Theme Color (mobile browser UI) -->
+		<meta name="theme-color" content="#000000">
+
+		<!-- 🔗 Open Graph (WhatsApp, Facebook, LinkedIn preview) -->
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="POEM International | Sermons, Worship & Gospel Messages">
+		<meta property="og:description" content="Experience powerful sermons, worship songs, and gospel teachings from People of Exploits Ministry International (POEM).">
+		<meta property="og:image" content="{{ asset('assets/image/images/mum_meta.png') }}">
+		<meta property="og:url" content="https://poeminternational.com">
+		<meta property="og:site_name" content="POEM International">
+
+		<!-- 💬 WhatsApp uses Open Graph above -->
+
+		<!-- 🐦 Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="POEM International | Sermons & Worship">
+		<meta name="twitter:description" content="Watch sermons, listen to worship songs, and explore gospel messages from POEM International.">
+		<meta name="twitter:image" content="{{ asset('assets/image/images/mum_meta.png') }}">
+
+		<!-- 📱 Fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
 		<link href="http://fonts.googleapis.com/css?family=Belgrano:400" rel="stylesheet" type="text/css">
-		<link href="assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-		<!-- Loading main css file -->
-		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-		<link rel="stylesheet" href="{{asset('assets/css/book.css')}}">
-		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/footer.css')}}">
-		<link rel="stylesheet" type="text/css" href="{{asset('assets/css/testimonial.css')}}">
-		<!-- AOS CSS -->
-       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<!-- 🎯 Icons -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/fontawesome/css/all.css') }}">
+		<link href="assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/image/images/newLogo.png') }}">
+
+		<!-- 🎨 Styles -->
+		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/book.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/footer.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/testimonial.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slider.css') }}">
+
+		<!-- 🎬 AOS Animation -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 		
 		<!--[if lt IE 9]>
