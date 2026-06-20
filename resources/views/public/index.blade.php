@@ -786,7 +786,7 @@
 					  <div class="seremon-wrapper">
 						<!-- Column: Recent Songs -->
 						<div class="seremon-column" data-aos="zoom-in" data-aos-duration="1000">
-						  <h3 class="section-title">Recent Songs</h3>
+						  <h3 class="section-title" style="color:#fff">Recent Songs</h3>
 						  <ul class="seremon-list">
 							<li>
 							  <h3 class="seremon-title"><a href="https://open.spotify.com/album/3auKSK4mJN0FzCSK9HXu2w">Mercy Found Me</a></h3>
@@ -806,7 +806,7 @@
 				  
 						<!-- Column: Latest Sermons -->
 						<div class="seremon-column" data-aos="zoom-in" data-aos-duration="1000">
-						  <h3 class="section-title">Latest Sermons</h3>
+						  <h3 class="section-title" style="color:#fff">Latest Sermons</h3>
 						  <ul class="seremon-list">
 							<li>
 							@foreach ($sermons as $sermon)
@@ -825,7 +825,7 @@
 							@endforeach
 							<!-- More sermons... -->
 						  </ul>
-						  <a href="{{route('public.message')}}" class="button view-all">See all latest sermons</a>
+						  <a href="{{route('public.message')}}" class="button view-all">See latest sermons</a>
 						</div>
 					  </div>
 					</div>

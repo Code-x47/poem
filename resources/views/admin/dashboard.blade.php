@@ -93,7 +93,7 @@
   </table>
 </div>
 
-    <!-- Sermon Table Section -->
+<!-- Sermon Table Section -->
 <div id="sermons" class="table-container section" style="margin-top: 40px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); overflow-x: auto;">
   <div class="table-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
     <h2 style="margin: 0; font-size: 1.2rem; color: #333;">Sermon Table</h2>
@@ -129,6 +129,11 @@
       <!-- Add more rows here -->
     </tbody>
   </table>
+
+  <div style="margin-top:20px;">
+    {{ $msg->links() }}
+  </div>
+  
 </div>
 
 
