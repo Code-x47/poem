@@ -116,3 +116,8 @@ Route::get('/clear-cache', function () {
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');
 });
+
+
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
