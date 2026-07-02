@@ -27,7 +27,7 @@ class MediaController extends Controller
     $req->validate([
         'title'       => 'required|string|max:255',
         'minister'    => 'required|string|max:255',
-        'file'        => 'required|mimes:mp3,wav,m4a|max:150500', // 150MB
+        'file'        => 'required|mimes:mp3,wav,m4a|max:512000', // 512MB
         'sermon_date' => 'required|date',
         'year'        => 'required|integer',
         'month'       => 'required|string',
