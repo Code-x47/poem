@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Throwable;
 
 
 
@@ -66,6 +67,8 @@ public function presign(Request $request)
 
 public function addSermon(Request $req){
 
+ Log::info('S3 Upload Started');
+
 $req->validate([
     'title'       => 'required|string|max:255',
     'minister'    => 'required|string|max:255',
@@ -89,10 +92,18 @@ $this->authorize('create', Sermon::class);
 try {    
 $path = Storage::disk('s3')->putFileAs("sermons/{$req->year}/{$req->month}", $file, $filename);
  
-} catch (\Exception $e) {
-        Log::error($e);
+Log::info('S3 Upload Finished', [
+        'path' => $path
+    ]);
 
-        return back()->with('error', $e->getMessage());
+} catch (Throwable $e) {
+
+    Log::error('S3 Upload Failed', [
+        'message' => $e->getMessage(),
+        'trace' => $e->getTraceAsString()
+    ]);
+
+    return back()->withErrors($e->getMessage());
 }
  if (!$path) {
         return back()->with('error', 'Upload to S3 failed');
