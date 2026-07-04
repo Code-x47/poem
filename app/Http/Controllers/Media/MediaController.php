@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Media;
 
-use App\Models\Song;
-use App\Models\User;
-use App\Models\Sermon;
-use App\Models\Picture;
-use App\Models\Testimony;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Picture;
+use App\Models\Sermon;
+use App\Models\Song;
+use App\Models\Testimony;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -19,47 +20,81 @@ use Illuminate\Support\Str;
 class MediaController extends Controller
 {
 
-   use AuthorizesRequests;
+use AuthorizesRequests;
+
+public function presign(Request $request)
+{
+        $request->validate([
+        'title' => 'required|string|max:255',
+        'minister' => 'required|string|max:255',
+        'filename' => 'required|string',
+        'filesize' => 'required|integer|max:536870912', // 512 MB in bytes
+        'mime' => 'required|in:audio/mpeg,audio/mp4,audio/x-m4a,audio/wav',
+        'year' => 'required|integer',
+        'month' => 'required|string',
+    ]);
+
+    $filename = Str::slug(pathinfo($request->filename, PATHINFO_FILENAME))
+        . '.'
+        . pathinfo($request->filename, PATHINFO_EXTENSION);
+
+    $key = "sermons/{$request->year}/{$request->month}/{$filename}";
+
+    $client = Storage::disk('s3')->getClient();
+
+    $command = $client->getCommand('PutObject', [
+        'Bucket' => config('filesystems.disks.s3.bucket'),
+        'Key' => $key,
+        'ContentType' => 'audio/mpeg'
+    ]);
+
+    $requestUrl = $client->createPresignedRequest(
+        $command,
+        '+30 minutes'
+    );
+
+    return response()->json([
+        'url' => (string)$requestUrl->getUri(),
+        'key' => $key
+    ]);
+}
 
 
-   public function addSermon(Request $req){
-    
-    $req->validate([
-        'title'       => 'required|string|max:255',
-        'minister'    => 'required|string|max:255',
-        'file'        => 'required|mimes:mp3,wav,m4a|max:512000', // 512MB
-        'sermon_date' => 'required|date',
-        'year'        => 'required|integer',
-        'month'       => 'required|string',
-     ]);
-   
-    $this->authorize('create', Sermon::class);
 
-        $title = $req->input('title'); 
-        $file = $req->file('file'); 
-        // ABSOLUTE path to public_html storage folder                         
+
+
+
+public function addSermon(Request $req){
+
+$req->validate([
+    'title'       => 'required|string|max:255',
+    'minister'    => 'required|string|max:255',
+    'file'        => 'required|mimes:mp3,wav,m4a|max:512000', // 512MB
+    'sermon_date' => 'required|date',
+    'year'        => 'required|integer',
+    'month'       => 'required|string',
+    ]);
+
+$this->authorize('create', Sermon::class);
+
+    $title = $req->input('title'); 
+    $file = $req->file('file'); 
+                    
   
        
     $cleanTitle = Str::slug($req->title); 
     $filename = $cleanTitle . '.' . $file->getClientOriginalExtension();   
-   // Store file safely
-   
 
-    // ABSOLUTE path to public_html storage folder           
-//$destination = '/home/u179489477/domains/mediumpurple-gnat-879240.hostingersite.com/public_html/storage/sermons';                           
-  // Ensure the folder exists                            
-//if (!file_exists($destination)) { mkdir($destination, 0755, true); } 
 
-// Move file directly          
-  //$file->move($destination, $filename);
 try {    
 $path = Storage::disk('s3')->putFileAs("sermons/{$req->year}/{$req->month}", $file, $filename);
  
 } catch (\Exception $e) {
-    $e->getMessage();
+        Log::error($e);
+
+        return back()->with('error', $e->getMessage());
 }
- 
-   if (!$path) {
+ if (!$path) {
         return back()->with('error', 'Upload to S3 failed');
     }
 

@@ -58,6 +58,9 @@ Route::get('/dashboard', function() {
    //SEARCH SERMON
    Route::Get('/search','SearchSermon')->name('message.search');
 
+
+   Route::post('/sermons/presign','presign');
+
    
 
 });
