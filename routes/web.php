@@ -7,6 +7,7 @@ use App\Services\SmsService;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 
 Route::get('/', [HomeController::class,"Index"])->name('home.index');;
@@ -123,4 +124,14 @@ Route::get('/storage-link', function () {
 
 Route::get('/phpinfo', function () {
     phpinfo();
+});
+
+Route::get('/test-s3', function () {
+
+    Storage::disk('s3')->put(
+        'test.txt',
+        'Hello World'
+    );
+
+    return 'OK';
 });
