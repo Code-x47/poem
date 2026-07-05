@@ -465,6 +465,7 @@
 
 
   <script src="assets/js/dashboard2.js"></script>
+  <script src="assets/js/upload.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
@@ -537,6 +538,8 @@
     testimonies.style.display = 'block';
   });
 </script>
+
+<script></script>
 
 
 

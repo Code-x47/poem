@@ -8,6 +8,7 @@ use App\Models\Sermon;
 use App\Models\Song;
 use App\Models\Testimony;
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -67,7 +68,7 @@ public function presign(Request $request)
 
 public function addSermon(Request $req){
 
- Log::info('S3 Upload Started');
+Log::info('S3 Upload Started');
 
 $req->validate([
     'title'       => 'required|string|max:255',
@@ -165,8 +166,16 @@ public function download(Sermon $sermon){
 
      public function deleteSermon(Sermon $sermon) {
         $this->authorize('delete');
-        dd('Sermon Deleted');
-        $sermon->delete();
+    
+        try{
+         $sermon->delete();
+        }
+        catch(Exception $e) {
+           Log::error("Error Details Are AS Follows",[
+              "Message" => $e->getMessage(),
+           ]);
+        }
+        
         return redirect('dashboard');
      }
 
