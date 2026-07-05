@@ -164,19 +164,27 @@ public function download(Sermon $sermon){
         return view('sermonDetails');
      }
 
-     public function deleteSermon(Sermon $sermon) {
+     public function deleteSermon($id) {
         $this->authorize('delete');
     
         try{
-         $sermon->delete();
+            $sermon = Sermon::findOrFail($id);
+           $sermon->delete();
+          return redirect('dashboard')
+            ->with('success', 'Sermon deleted successfully.');
+
         }
-        catch(Exception $e) {
-           Log::error("Error Details Are AS Follows",[
-              "Message" => $e->getMessage(),
-           ]);
-        }
+        catch (Throwable $e) {
+        Log::error('Failed to delete sermon.', [
+            'sermon_id' => $sermon->id,
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+        ]);
+
+        return back()->with('error', 'Unable to delete the sermon. Please try again.');
+    }
         
-        return redirect('dashboard');
+       
      }
 
 

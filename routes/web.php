@@ -42,7 +42,7 @@ Route::get('/dashboard', function() {
    Route::Get("editUser/{user}","editUser")->name('edit.user');
    Route::Post('update','updateUser')->name('update.user');
    Route::get('delete/{user}','deleteUser');
-   Route::get('delete/{sermon}','deleteSernmon')->name('delete.sermon');
+   Route::get('delete/{id}','deleteSermon')->name('delete.sermon');
    //Route::view("update","public.update");
 
    //DASHBOARD CRUD
