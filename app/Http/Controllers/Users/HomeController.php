@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function Index() {
         $testimonies = Testimony::latest()->take(4)->get();
-        $sermons = Sermon::latest()->take(1)->get();
+        $sermons = Sermon::orderBy("sermon_date","desc")->first();
         $pics = Picture::latest()->take(5)->get();
         return view('public.index',compact('testimonies','sermons','pics'));
     }
