@@ -809,7 +809,7 @@
 						  <h3 class="section-title" style="color:#fff">Latest Sermons</h3>
 						  <ul class="seremon-list">
 							<li>
-							@foreach ($sermons as $sermon)
+							
 									
 								
 							  <h3 class="seremon-title"><a href="#">{{$sermon->title}}</a></h3>
@@ -822,7 +822,7 @@
 								<a href="{{route('public.message')}}" class="button"><i class="fa fa-download"></i> Download</a>
 							  </div>
 							 </li>
-							@endforeach
+							
 							<!-- More sermons... -->
 						  </ul>
 						  <a href="{{route('public.message')}}" class="button view-all">See latest sermons</a>

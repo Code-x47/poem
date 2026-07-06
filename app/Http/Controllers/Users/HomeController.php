@@ -12,9 +12,9 @@ class HomeController extends Controller
 {
     public function Index() {
         $testimonies = Testimony::latest()->take(4)->get();
-        $sermons = Sermon::orderBy("sermon_date","desc")->first();
+        $sermon = Sermon::orderBy("sermon_date","desc")->first();
         $pics = Picture::latest()->take(5)->get();
-        return view('public.index',compact('testimonies','sermons','pics'));
+        return view('public.index',compact('testimonies','sermon','pics'));
     }
 
     public function Gallery() {
