@@ -592,7 +592,7 @@
 								<div class="pastor" data-aos="zoom-in" data-aos-duration="1000">
 									<img src="assets/image/images/dr_okwu.jpg" alt="" class="pastor-image">
 									<h3 class="pastor-name">Pastor(Dr) Okwu</h3>
-									<small class="date">Assistant Pastor</small>
+									<small class="date">Resident Pastor</small>
 								</div>
 							
 							
