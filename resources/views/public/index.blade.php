@@ -232,7 +232,7 @@
 
 
         .hero-slide[data-slide="0"] .hero-background {
-            background-image: url('assets/image/pix/bg2.jpg');
+            background-image: url('assets/image/pix/bgNew.jpg');
             background-size: cover;
             background-position: center;
         }
