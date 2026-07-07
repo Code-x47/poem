@@ -214,7 +214,7 @@ public function download(Sermon $sermon){
 
 
      // ABSOLUTE path to public_html storage folder
-    $destination = '/home/u179489477/domains/mediumpurple-gnat-879240.hostingersite.com/public_html/storage/pictures';
+    $destination = '/home/u179489477/domains/poeminternational.com/public_html/storage/pictures';
 
     // Ensure the folder exists
     if (!file_exists($destination)) {
