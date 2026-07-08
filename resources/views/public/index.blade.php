@@ -583,9 +583,9 @@
 							
 						
 								<div class="pastor" data-aos="zoom-in" data-aos-duration="1000">
-									<img src="assets/image/images/Obi.jfif" alt="" class="pastor-image">
-									<h3 class="pastor-name">Pastor Obinna Ezigbo</h3>
-									<small class="date">Youth Pastor</small>
+									<img src="assets/image/images/us_pst.jpg" alt="" class="pastor-image">
+									<h3 class="pastor-name">Pastor Felicia Igbelina</h3>
+									<small class="date">USA Pastor</small>
 								</div>
 							
 							
