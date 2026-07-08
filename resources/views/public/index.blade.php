@@ -812,10 +812,10 @@
 							
 									
 								
-							  <h3 class="seremon-title"><a href="#">{{$sermon->title}}</a></h3>
+							  <h3 class="seremon-title"><a href="#">{{$sermon?->title}}</a></h3>
 							  <div class="seremon-meta">
-								<span><i class="fa fa-calendar"></i> <strong>Date:</strong> {{$sermon->sermon_date}}</span>
-								<span><i class="fa fa-user"></i> <strong>Pastor:</strong>{{$sermon->minister}}</span>
+								<span><i class="fa fa-calendar"></i> <strong>Date:</strong> {{$sermon?->sermon_date}}</span>
+								<span><i class="fa fa-user"></i> <strong>Pastor:</strong>{{$sermon?->minister}}</span>
 							  </div>
 							  <div class="seremon-buttons">
 								<a href="{{route('public.message')}}" class="button"><img src="assets/image/images/icon-headset.png" alt="" class="icon">Stream</a>
