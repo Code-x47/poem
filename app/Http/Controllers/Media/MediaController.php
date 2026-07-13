@@ -233,13 +233,16 @@ public function download(Sermon $sermon){
 
 
      public function AddBook(Request $req) {
-
+         
         $req->validate([
          "title"=>"Required",
          "author"=>"Required",
          "summary"=>"Required",
-         "image_path"=>"Required",
+         "file"=>"Required",
         ]);
+
+
+        dd("validation passed");
 
            
          $title = $req->input('title');
