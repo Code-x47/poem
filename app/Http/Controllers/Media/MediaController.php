@@ -242,14 +242,14 @@ public function download(Sermon $sermon){
         ]);
 
 
-        dd("validation passed");
-
            
          $title = $req->input('title');
 
-        $destination = '/home/u179489477/domains/poeminternational.com/public_html/books';
+          $filename = $title . "" . $req->file->getClientOriginalExtension();
 
-        $filename = $title . "" . $req->file->getClientOriginalExtension();
+         $destination = '/home/u179489477/domains/poeminternational.com/public_html/books';
+
+       
 
         //$req->file->move(public_path('books'), $filename); //For Local testing
 
