@@ -248,7 +248,9 @@ public function download(Sermon $sermon){
 
         $filename = $title . "" . $req->file->getClientOriginalExtension();
 
-        $req->file->move(public_path('books'), $filename);
+        //$req->file->move(public_path('books'), $filename); //For Local testing
+
+        $req->file->move($destination, $filename); //For Production
          
         $book = new Book;
         $book->title = $req->title;
@@ -275,7 +277,11 @@ public function download(Sermon $sermon){
 
          $filename = $title . "" . $request->file->getClientOriginalExtension();
 
-         $request->file->move(public_path('books'), $filename);
+         //$request->file->move(public_path('books'), $filename);
+
+         $destination = '/home/u179489477/domains/poeminternational.com/public_html/books';
+
+         $request->file->move($destination, $filename);
 
          $book->update([
             "title" => $request->title,
