@@ -24,7 +24,8 @@
      </div>
       <div class="nav-menu">
         <div id="sermon" class="nav-item"><span class="nav-icon">🎵</span>Sermon</div>
-        <div id="song" class="nav-item"><span class="nav-icon">🎵</span>Songs</div>
+        <!--<div id="song" class="nav-item"><span class="nav-icon">🎵</span>Songs</div>-->
+        <div id="book" class="nav-item"><span class="nav-icon">📨</span>Books</div>
         <div id="addImagesBtn" class="nav-item"><span class="nav-icon">🖼️</span> Add Images</div>
         <div id="sendWhatsAppBtn" class="nav-item"><span class="nav-icon">📱</span> Send WhatsApp Message</div>
         <div id="sendTextBtn" class="nav-item"><span class="nav-icon">📨</span><a href="{{Route('sendSms')}}" style="color:white; text-decoration:none"> Send Text Message</a></div>
@@ -137,11 +138,14 @@
 </div>
 
 
-<!-- Add Songs -->
-<div id="songs" class="table-container section" style="margin-top: 40px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); overflow-x: auto;">
+
+
+<!-- Add Books-->
+
+<div id="books" class="table-container section" style="margin-top: 40px; background: #ffffff; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); overflow-x: auto;">
   <div class="table-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-    <h2 style="margin: 0; font-size: 1.2rem; color: #333;">Songs</h2>
-    <button class="create-btn" id="addMusicBtn" style="background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">+ Create New</button>
+    <h2 style="margin: 0; font-size: 1.2rem; color: #333;">Books</h2>
+    <button class="create-btn" id="addBookBtn" style="background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer;">+ Create New</button>
   </div>
 
   <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
@@ -149,29 +153,30 @@
       <tr style="background-color: #f0f2f5; color: #333;">
         <th style="padding: 12px; text-align: left;">#</th>
         <th style="padding: 12px; text-align: left;">Title</th>
-        <th style="padding: 12px; text-align: left;">Minister</th>
-        <th style="padding: 12px; text-align: left;">Year</th>
+        <th style="padding: 12px; text-align: left;">Author</th>
+        <th style="padding: 12px; text-align: left;">Status</th>
         <th style="padding: 12px; text-align: left;">Actions</th>
       </tr>
     </thead>
     <tbody>
-    
+    @foreach($books as $book)
       <tr style="border-bottom: 1px solid #eee;">
-        <td style="padding: 12px;">1</td>
-        <td style="padding: 12px;">No song available yet</td>
-        <td style="padding: 12px;">No song available yet</td>
-        <td style="padding: 12px;">No song available yet</td>
+        <td style="padding: 12px;">{{$book['id']}}</td>
+        <td style="padding: 12px;">{{$book['title']}}</td>
+        <td style="padding: 12px;">{{$book['author']}}</td>
+        <td style="padding: 12px;">{{$book['status']}}</td>
         <td style="padding: 12px;">
           <button style="background-color: #17a2b8; color: white; padding: 6px 10px; border: none; border-radius: 4px; font-size: 12px; margin-right: 5px;"><a style="text-decoration: none; color: white;" href="#">Download</a></button>
-          <button style="background-color: #ffc107; color: white; padding: 6px 10px; border: none; border-radius: 4px; font-size: 12px; margin-right: 5px; text-decoration: none; color: white;"><a style="text-decoration: none; color: white;" href="#">Update</a></button>
+          <button style="background-color: #ffc107; color: white; padding: 6px 10px; border: none; border-radius: 4px; font-size: 12px; margin-right: 5px; text-decoration: none; color: white;"><a style="text-decoration: none; color: white;" href="{{route('edit.book',$book->id)}}">Update</a></button>
           <button style="background-color: #dc3545; color: white; padding: 6px 10px; border: none; border-radius: 4px; font-size: 12px;"><a style="text-decoration: none; color: white;" href="#">Delete</a></button>
         </td>
       </tr>
-      
+      @endforeach
       <!-- Add more rows here -->
     </tbody>
   </table>
 </div>
+
 
 
 
@@ -328,50 +333,48 @@
 
 </div>
 
-<!--ADD Music Modal -->
+<!--ADD Book Modal -->
 
-<div id="musicModal" class="modal">
+<div id="bookModal" class="modal">
     <div class="modal-content content3">
       <div class="modal-header">
-        <h3 class="modal-title">Add New Song</h3>
-        <button class="close-modal" data-modal="musicModal">×</button>
+        <h3 class="modal-title">Add New Book</h3>
+        <button class="close-modal" data-modal="bookModal">×</button>
       </div>
       
 
-      <form id="" method="POST" action="" enctype="multipart/form-data">
+      <form id="" method="POST" action="{{route('add.book')}}" enctype="multipart/form-data">
+      @csrf
         <div class="form-group">
           <label class="form-label">Title</label>
           <input type="text" class="form-input" name="title">
        </div>
 
        <div class="form-group">
-        <label class="form-label">Minister</label>
-        <input type="text" class="form-input" name="minister">
+        <label class="form-label">Author</label>
+        <input type="text" class="form-input" name="author">
       </div>
 
       <div class="form-group">
-       <label class="form-label">Description</label>
-       <textarea class="form-textarea" name="description" rows="4"></textarea>
+       <label class="form-label">Summary</label>
+       <textarea class="form-textarea" name="summary" rows="4"></textarea>
      </div>
 
      <div class="form-group">
-      <label class="form-label">Audio File</label>
-      <input type="file" class="form-input" name="audio_path">
+      <label class="form-label">Book Page Cover</label>
+      <input type="file" class="form-input" name="image_path">
     </div>
 
-    
-
-  <!-- Optional: If you want users to manually choose year and month -->
-  <!-- Otherwise derive in controller from sermon_date -->
-
-   <div class="form-group">
-    <label class="form-label">Year</label>
-    <input type="number" class="form-input" name="year" min="1900" max="2100">
-  </div>
+     <div class="form-group">
+        <label class="form-label">Status</label>
+        <select name="status">
+           <option value="Not yet available on Amazon">Not Available</option>
+           <option value="Available on Amazon">Available</option>
+        </select>
+     </div>
 
 
-
-    <button type="submit" class="btn btn-primary">Add Song</button>
+    <button type="submit" class="btn btn-primary">Add Book</button>
   </form>
 
 
@@ -500,20 +503,24 @@
   // Sections
   const manageUsers = document.getElementById('manage-users');
   const sermons = document.getElementById('sermons');
-  const songs = document.getElementById('songs');
+ 
+  const books = document.getElementById('books');
   const testimonies = document.getElementById('testimonies');
 
   // Menu buttons
   const userBtn = document.getElementById('user');
   const sermonBtn = document.getElementById('sermon');
-  const songBtn = document.getElementById('song');
+
   const testimonyBtn = document.getElementById('testimonyBtn');
+  const bookBtn = document.getElementById('book');
+ 
 
   // Helper: hide all
   function hideAllSections() {
     manageUsers.style.display = 'none';
     sermons.style.display = 'none';
-    songs.style.display = 'none';
+  
+    books.style.display = 'none';
     testimonies.style.display = 'none';
   }
 
@@ -528,9 +535,11 @@
     sermons.style.display = 'block';
   });
 
-  songBtn.addEventListener('click', () => {
+ 
+
+   bookBtn.addEventListener('click', () => {
     hideAllSections();
-    songs.style.display = 'block';
+    books.style.display = 'block';
   });
 
   testimonyBtn.addEventListener('click', () => {

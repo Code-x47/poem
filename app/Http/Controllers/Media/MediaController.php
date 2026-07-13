@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Media;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\Picture;
 use App\Models\Sermon;
 use App\Models\Song;
@@ -207,12 +208,6 @@ public function download(Sermon $sermon){
            // $file->move(public_path('storage/pictures'), $filename);
 
            
-
-
-
-
-
-
      // ABSOLUTE path to public_html storage folder
     $destination = '/home/u179489477/domains/poeminternational.com/public_html/storage/pictures';
 
@@ -237,37 +232,67 @@ public function download(Sermon $sermon){
 
 
 
-     public function addSongs(Request $req) {
+     public function AddBook(Request $req) {
+
         $req->validate([
          "title"=>"Required",
-         "minister"=>"Required",
-         "description"=>"Required",
-         "audio_path"=>"Required",
-         "release_date"=>"Required",
-         "year"=>"Required",
-         "month"=>"Required"
+         "author"=>"Required",
+         "summary"=>"Required",
+         "image_path"=>"Required",
         ]);
 
+           
+         $title = $req->input('title');
+
+        $destination = '/home/u179489477/domains/poeminternational.com/public_html/books';
+
+        $filename = $title . "" . $req->file->getClientOriginalExtension();
+
+        $req->file->move(public_path('books'), $filename);
+         
+        $book = new Book;
+        $book->title = $req->title;
+        $book->author = $req->author;
+        $book->summary = $req->summary;
+        $book->status = $req->status;
+        $book->file =  $filename;
         
-
-        $path = $req->file('file')->store('songs', 'public');
-        $song = new Song;
-        $song->title = $req->title;
-        $song->minister = $req->minister;
-        $song->description = $req->description;
-        $song->audio_path =  $path;
-        $song->release_date = $req->release_date;
-        $song->year = $req->year;
-        $song->month = $req->month;
-
-        $song->save();
+        $book->save();
         return redirect('dashboard');
+     }
+
+     public function EditBook($id) {
+        $book = Book::findOrFail($id);
+        return view("public/BookEdit",compact("book"));
+
+     }
+
+     public function UpdateBook(Request $request) {
+         $id = $request->input('id');
+         $book = Book::find($id);
+
+         $title = $request->input('title');
+
+         $filename = $title . "" . $request->file->getClientOriginalExtension();
+
+         $request->file->move(public_path('books'), $filename);
+
+         $book->update([
+            "title" => $request->title,
+            "summary" => $request->summary,
+            "author" => $request->author,
+            "status" => $request->status,
+            "file" => $filename
+         ]);
+
+         return redirect('dashboard');
      }
 
  public function dashboardControl() {
        $userdata = User::all();
        $msg = Sermon::paginate(20);
        $songs = Song::all();
+       $books = Book::all();
        $pics = Picture::all();
        $testimonies = Testimony::get();
        $users = User::selectRaw('MONTH(created_at) as month, count(*) as count')
@@ -317,7 +342,7 @@ public function download(Sermon $sermon){
                 ]
                     ];
 
-       return view("admin.dashboard",compact('msg','datasets','labels','userdata','songs','pics','testimonies'));
+       return view("admin.dashboard",compact('msg','datasets','labels','userdata','songs','pics','testimonies','books'));
      }
 
      public function SermonPage() {

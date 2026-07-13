@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ids = {
     messageModal: 'addMessageBtn',
     imageModal: 'addImagesBtn',
-    musicModal: 'addMusicBtn',
+    bookModal: 'addBookBtn',
     whatsappModal: 'sendWhatsAppBtn',
     textModal: 'sendTextBtn',
     userModal: 'registerUserBtn',
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  ['messageModal', 'musicModal', 'whatsappModal', 'textModal', 'userModal','imageModal','testimonyModal'].forEach(id => {
+  ['messageModal', 'bookModal', 'whatsappModal', 'textModal', 'userModal','imageModal','testimonyModal'].forEach(id => {
     const modal = document.getElementById(id);
     modal?.addEventListener('click', e => {
       if (e.target === modal) closeModal(modal);

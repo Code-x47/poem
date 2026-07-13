@@ -617,28 +617,10 @@
   
 	<div class="box-slider">
 	  <div class="box-container" id="sliderContainer">
-		<!-- Book 1 -->
-		<div class="box" data-aos="zoom-in" data-aos-duration="1000">
-		  <div class="icons">
-			<a href="#" class="fas fa-shopping-cart"></a>
-			<a href="#" class="fas fa-heart"></a>
-			<a href="#" class="fas fa-eye"></a>
-		  </div>
-		  <div class="image">
-			<img src="assets/image/images2/stranded.jpeg" alt="Gifted But Stranded">
-		  </div>
-		  <div class="content">
-			<h3>Gifted But Stranded</h3>
-			<div class="stars">
-			  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-			  <i class="fas fa-star"></i><i class="fas fa-star"></i>
-			</div>
-			<div class="price">N1000.00 <span>N3500.00</span></div>
-			<div class="btn"><button><a href="#">Add to Cart</a></button></div>
-		  </div>
-		</div>
+		
   
 		<!-- Book 2 -->
+		@foreach($books as $book)
 		<div class="box" data-aos="zoom-in" data-aos-duration="1000">
 		  <div class="icons">
 			<a href="#" class="fas fa-shopping-cart"></a>
@@ -646,39 +628,21 @@
 			<a href="#" class="fas fa-eye"></a>
 		  </div>
 		  <div class="image">
-			<img src="assets/image/images2/beware.jpg" alt="Beware">
+			<img src="{{asset('books/' .$book->file)}}" alt="Beware">
 		  </div>
 		  <div class="content">
-			<h3>Beware Of Old Prophets</h3>
+			<h3>{{$book['title']}}</h3>
 			<div class="stars">
 			  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 			  <i class="fas fa-star"></i><i class="fas fa-star"></i>
 			</div>
 			<div class="price">N1000.00 <span>N3500.00</span></div>
-			<div class="btn"><button><a href="#">Add to Cart</a></button></div>
+			<div class="btn"><button><a href="{{route('book.details',$book->id)}}">Add to Cart</a></button></div>
 		  </div>
 		</div>
+		@endforeach
   
-		<!-- Book 3 -->
-		<div class="box" data-aos="zoom-in" data-aos-duration="1000">
-		  <div class="icons">
-			<a href="#" class="fas fa-shopping-cart"></a>
-			<a href="#" class="fas fa-heart"></a>
-			<a href="#" class="fas fa-eye"></a>
-		  </div>
-		  <div class="image">
-			<img src="assets/image/images2/voice2.jpeg" alt="Voice of God">
-		  </div>
-		  <div class="content">
-			<h3>Voice of God</h3>
-			<div class="stars">
-			  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-			  <i class="fas fa-star"></i><i class="fas fa-star"></i>
-			</div>
-			<div class="price">N1000.00 <span>N3500.00</span></div>
-			<div class="btn"><button><a href="#">Add to Cart</a></button></div>
-		  </div>
-		</div>
+		
   
 	  </div>
 	</div>

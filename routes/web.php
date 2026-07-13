@@ -26,7 +26,11 @@ Route::get('/dashboard', function() {
     return view('admin.dashboard');
 });
 
-    //Route::view('test','test');
+
+//BOOK DETAILS ROUTE
+Route::get("book-detail/{id}",[HomeController::class,"BookDetails"])->name('book.details');
+
+//Route::view('test','test');
 
 
    Route::controller(MediaController::class)->group(function() {
@@ -45,6 +49,11 @@ Route::get('/dashboard', function() {
    Route::get('delete/{id}','deleteSermon')->name('delete.sermon');
    //Route::view("update","public.update");
 
+   //BOOK CRUD ROUTE
+   Route::post("add-book","AddBook")->name("add.book");
+   Route::get("edit-book/{id}","EditBook")->name('edit.book');
+   Route::post("update-book","UpdateBook")->name('update.book');
+
    //DASHBOARD CRUD
    Route::Get("/dashboard","dashboardControl")->middleware('AdminRoute');
 
@@ -55,6 +64,8 @@ Route::get('/dashboard', function() {
    Route::Get('/message','SermonPage')->name('public.message');
 
    Route::view('sermon-details',"public/sermonDetails");
+
+  
 
    //SEARCH SERMON
    Route::Get('/search','SearchSermon')->name('message.search');

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Users;
 
-use App\Models\Sermon;
+use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\Picture;
+use App\Models\Sermon;
 use App\Models\Testimony;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -14,11 +15,21 @@ class HomeController extends Controller
         $testimonies = Testimony::latest()->take(4)->get();
         $sermon = Sermon::orderBy("sermon_date","desc")->first();
         $pics = Picture::latest()->take(5)->get();
-        return view('public.index',compact('testimonies','sermon','pics'));
+        $books = Book::all();
+        return view('public.index',compact('testimonies','sermon','pics','books'));
     }
 
     public function Gallery() {
          $pics = Picture::latest()->take(16)->get();
          return view('public.gallery',compact('pics'));
     }
+
+
+    
+
+     public function BookDetails($id) {
+       $book = Book::find($id);
+       return view("public.bookpage",compact('book'));
+    }
+
 }
