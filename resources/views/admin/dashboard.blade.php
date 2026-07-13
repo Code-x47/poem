@@ -362,7 +362,7 @@
 
      <div class="form-group">
       <label class="form-label">Book Page Cover</label>
-      <input type="file" class="form-input" name="image_path">
+      <input type="file" class="form-input" name="file">
     </div>
 
      <div class="form-group">
