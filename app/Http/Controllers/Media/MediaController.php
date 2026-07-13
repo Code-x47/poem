@@ -265,7 +265,7 @@ public function download(Sermon $sermon){
 
      public function EditBook($id) {
         $book = Book::findOrFail($id);
-        return view("public/BookEdit",compact("book"));
+        return view("public.BookEdit",compact("book"));
 
      }
 
