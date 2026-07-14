@@ -620,6 +620,7 @@
 		
   
 		<!-- Book 2 -->
+		@if($books->isNotEmpty())
 		@foreach($books as $book)
 		<div class="box" data-aos="zoom-in" data-aos-duration="1000">
 		  <div class="icons">
@@ -637,10 +638,16 @@
 			  <i class="fas fa-star"></i><i class="fas fa-star"></i>
 			</div>
 			<div class="price">N1000.00 <span>N3500.00</span></div>
-			<div class="btn"><button><a href="{{route('book.details',$book->id)}}">Add to Cart</a></button></div>
+			
+			<div class="btn"><button><a href="{{route('book.details',['book' => $book->slug])}}">Add to Cart</a></button></div>
 		  </div>
 		</div>
+		
 		@endforeach
+
+		@else
+		<p>No books available.</p>
+	    @endif
   
 		
   

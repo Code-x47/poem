@@ -257,6 +257,7 @@ public function download(Sermon $sermon){
          
         $book = new Book;
         $book->title = $req->title;
+        $book->slug = Str::slug($req->title);
         $book->author = $req->author;
         $book->summary = $req->summary;
         $book->status = $req->status;
@@ -289,6 +290,7 @@ public function download(Sermon $sermon){
          $book->update([
             "title" => $request->title,
             "summary" => $request->summary,
+            "slug" => Str::slug($request->title),
             "author" => $request->author,
             "status" => $request->status,
             "file" => $filename

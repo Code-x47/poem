@@ -28,7 +28,7 @@ Route::get('/dashboard', function() {
 
 
 //BOOK DETAILS ROUTE
-Route::get("book-detail/{id}",[HomeController::class,"BookDetails"])->name('book.details');
+Route::get("/book-detail/{book}",[HomeController::class,"BookDetails"])->name('book.details');
 
 //Route::view('test','test');
 

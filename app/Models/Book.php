@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    protected $fillable = ["title","summary","author","status","file"];
+    protected $fillable = ["title","summary","author",'slug',"status","file"];
+
+
+    public function getRouteKeyName(){
+    return 'slug';
+    }
 }
+
+

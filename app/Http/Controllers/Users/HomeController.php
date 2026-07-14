@@ -27,8 +27,7 @@ class HomeController extends Controller
 
     
 
-     public function BookDetails($id) {
-       $book = Book::find($id);
+     public function BookDetails(Book $book) {
        return view("public.bookpage",compact('book'));
     }
 

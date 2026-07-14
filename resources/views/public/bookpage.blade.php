@@ -388,7 +388,7 @@
         <div class="notice">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
           <div>
-            <p class="notice-title">This title isn't on Amazon yet</p>
+            <p class="notice-title">{{ $book['title'] }}</p>
             <p>"{{ $book['title'] }}" is still on its way to press. The Amazon listing hasn't gone live, so there's nothing to buy there just yet — this page will be the first to update once that changes.</p>
           </div>
         </div>
